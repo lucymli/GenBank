@@ -1,0 +1,9 @@
+Package: GenBank
+Type: Package
+Title: Sequence retrieval from GenBank
+Version: 0.1.0
+Author: Lucy M Li
+Maintainer: Who to complain to <ml3109@ic.ac.uk>
+Description: Interfaces with e-utilities on the NCBI website to download sequence data from the Nucleotide database on GenBank.
+License: MIT
+LazyData: TRUE
