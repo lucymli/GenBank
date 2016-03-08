@@ -65,7 +65,17 @@ download.gb <- function(accessions, database="nucleotide", file.name=NULL,
       split.source.lines <- strsplit(raw.source.lines, "=")
       unlist(lapply(split.source.lines, function (x) {
         NAME <- substr(x[1], 2, nchar(x[1]))
-        value <- c(substr(x[2], 3, nchar(x[1])-2))
+        value <- c(substr(x[2], 2, nchar(x[2])-1))
+        names(value) <- NAME
+        return(value)
+      }))
+    })
+    gb$features.CDS <- lapply(seq_along(CDS.pos), function (i) {
+      raw.source.lines <- sub("^\\s+", "", gb.lines[(CDS.pos[i]+1):(ORIGIN.pos[i]-1)])
+      split.source.lines <- strsplit(raw.source.lines, "=")
+      unlist(lapply(split.source.lines, function (x) {
+        NAME <- substr(x[1], 2, nchar(x[1]))
+        value <- c(substr(x[2], 2, nchar(x[2])-1))
         names(value) <- NAME
         return(value)
       }))
